@@ -16,7 +16,7 @@ $table = traditions::getTraditionsInfo();
 <html lang='en'>
 <head>
 	<meta charset='UTF-8'>
-	<title>Big Blue  Checklist</title>
+	<title>Big Blue Checklist</title>
 </head>
 <body>
 	<h1>Welcome to the Big Blue Traditions Checklist</h1>
