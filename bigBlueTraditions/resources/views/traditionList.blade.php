@@ -66,7 +66,7 @@
             @if ($traditions->count())
                 @foreach ($traditions as $tradition)
                     <div class="mb-4">
-                        <p> Name: {{ $tradition->name }} - {{ $tradition->description }}</p>
+                        <p> {{ $tradition->name }} - {{ $tradition->description }}</p>
                         <p>Category: {{ $tradition->category }} Point Value:{{ $tradition->points }}</p>
                         <a class="bg-blue-100 mb-2" href="{{ route('completedTraditions') }}" class="p-3">Complete tradition!</a>
                     </div>

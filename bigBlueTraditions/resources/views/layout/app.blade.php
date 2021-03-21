@@ -18,6 +18,12 @@
 					<a href="{{ route('traditionList') }}" class="p-3">Traditions</a>
 				</li>
 				<li>
+					<a href="{{ route('resourceList') }}" class="p-3">Resources</a>
+				</li>
+				<li>
+					<a href="{{ route('ukFactsList') }}" class="p-3">Fun Facts</a>
+				</li>
+				<li>
 					<a href="{{ route('completedTraditions') }}" class="p-3">Completed Traditions</a>
 				</li>
 			</ul>
