@@ -9,7 +9,7 @@
                     <label for="name" class="sr-only">Name</label>
                     <textarea name="name" id="name" class="bg-gray-100 
                     border-2 w-full p-4 rounded-lg @error('name') border-red-500 @enderror"
-                    placeholder="Tradition name"></textarea>
+                    placeholder="Prize name"></textarea>
 
                     @error('name')
                         <div class="text-red-500 mt-2 text-sm">
@@ -22,7 +22,7 @@
                     <label for="description" class="sr-only">Description</label>
                     <textarea name="description" id="description" class="bg-gray-100 
                     border-2 w-full p-4 rounded-lg @error('description') border-red-500 @enderror"
-                    placeholder="Tradition description"></textarea>
+                    placeholder="Prize description"></textarea>
 
                     @error('description')
                         <div class="text-red-500 mt-2 text-sm">
@@ -35,7 +35,7 @@
                     <label for="points" class="sr-only">Points</label>
                     <textarea name="points" id="points" class="bg-gray-100 
                     border-2 w-full p-4 rounded-lg @error('points') border-red-500 @enderror"
-                    placeholder="Tradition point value"></textarea>
+                    placeholder="Prize point value"></textarea>
 
                     @error('points')
                         <div class="text-red-500 mt-2 text-sm">

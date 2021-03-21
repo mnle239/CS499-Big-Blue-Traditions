@@ -27,7 +27,7 @@
 					<a href="{{ route('couponList') }}" class="p-3">Local Coupons and Deals</a>
 				</li>
 				<li>
-					<a href="{{ route('prizeList') }}" class="p-3">Local Coupons and Deals</a>
+					<a href="{{ route('prizeList') }}" class="p-3">Prizes</a>
 				</li>
 			</ul>
 
