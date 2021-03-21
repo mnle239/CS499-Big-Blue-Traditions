@@ -2,28 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Coupon;
+use App\Models\Prize;
 use Illuminate\Http\Request;
 
-class CouponsController extends Controller
+class PrizesController extends Controller
 {
     public function index(){
-        $coupons = Coupon::get();
-        return view('couponList', [
-            'coupons' => $coupons
-        ]
-    );
+        $prizes = Prize::get();
+        return view('prizeList', [
+            'prizes' => $prizes
+        ]);
     }
 
     public function store(Request $request){
         $this->validate($request, [
             'name' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'points'=> 'required|integer'
         ]);
 
-        Coupon::create([
+        Prize::create([
             'name' => $request->name,
             'description' => $request->description,
+            'points' => $request->points,
         ]);
 
         return back();

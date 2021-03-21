@@ -3,13 +3,13 @@
 @section('content')
 <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
-            <form action="{{route('resourceList') }}" method="post" class="mb-4">
+            <form action="{{route('couponList') }}" method="post" class="mb-4">
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="sr-only">Name</label>
                     <textarea name="name" id="name" class="bg-gray-100 
                     border-2 w-full p-4 rounded-lg @error('name') border-red-500 @enderror"
-                    placeholder="Resource name"></textarea>
+                    placeholder="Name"></textarea>
 
                     @error('name')
                         <div class="text-red-500 mt-2 text-sm">
@@ -22,7 +22,7 @@
                     <label for="description" class="sr-only">Description</label>
                     <textarea name="description" id="description" class="bg-gray-100 
                     border-2 w-full p-4 rounded-lg @error('description') border-red-500 @enderror"
-                    placeholder="Resource description"></textarea>
+                    placeholder="Coupon or deal"></textarea>
 
                     @error('description')
                         <div class="text-red-500 mt-2 text-sm">
@@ -37,15 +37,15 @@
                 </div>
             </form>
 
-            @if ($resources->count())
-                @foreach ($resources as $resource)
+            @if ($coupons->count())
+                @foreach ($coupons as $coupon)
                     <div class="mb-4">
-                        <p> {{ $resource->name }} - {{ $resource->description }}</p>
+                        <p> {{ $coupon->name }} - {{ $coupon->description }}</p>
                     </div>
                 @endforeach
             @else
-                <p>There are no resources.</p>
-            @endif
+                <p>There are no coupons.</p>
+            @endif 
 
 
         </div>

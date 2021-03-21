@@ -24,7 +24,10 @@
 					<a href="{{ route('ukFactsList') }}" class="p-3">Fun Facts</a>
 				</li>
 				<li>
-					<a href="{{ route('completedTraditions') }}" class="p-3">Completed Traditions</a>
+					<a href="{{ route('couponList') }}" class="p-3">Local Coupons and Deals</a>
+				</li>
+				<li>
+					<a href="{{ route('prizeList') }}" class="p-3">Local Coupons and Deals</a>
 				</li>
 			</ul>
 
