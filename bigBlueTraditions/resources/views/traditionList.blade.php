@@ -63,6 +63,28 @@
                 </div>
             </form>
 
+            <nav class="p-6 bg-white flex justify-between mb-6">
+                <ul class="flex items-center">
+                    <li>
+                        <button id="All" class="p-3">All</button>
+                    </li>
+                    <li>
+                        <button id="History" class="p-3">History/Traditions</button>
+                    </li>
+                    <li>
+                        <button id="BBN" class="p-3">Big Blue Nation</button>
+                    </li>
+                    <li>
+                        <button id="Involvement" class="p-3">Student Involvement</button>                   
+                    </li>
+                    <li>
+                        <button id="Kentucky" class="p-3">My Old Kentucky Home</button>
+                    </li>
+                </ul>
+            </nav>
+
+
+
             @if ($traditions->count())
                 @foreach ($traditions as $tradition)
                     <div class="mb-4">
