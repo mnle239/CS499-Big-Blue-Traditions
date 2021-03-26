@@ -7,18 +7,20 @@ use Illuminate\Http\Request;
 
 class TraditionsController extends Controller
 {
-    private $category;
 
     public function index(){
-        $history = Tradition::get()->where('category', "History/Traditions");
-        $bbn = Tradition::get()->where('category', "Big Blue Nation");
-        $involvment = Tradition::get()->where('category', "Student Involvement");
-        $home = Tradition::get()->where('category', "My Old Kentucky Home");
+        $categories = ["All", "History/Traditions", "Big Blue Nation", "Student Involvement", "My Old Kentucky Home"];
+        
+        $history = Tradition::get()->where('category', $categories[1]);
+        $bbn = Tradition::get()->where('category', $categories[2]);
+        $involvment = Tradition::get()->where('category', $categories[3]);
+        $home = Tradition::get()->where('category', $categories[4]);
         $all = Tradition::get();
 
         $sortedTraditions = [$all, $history, $bbn, $involvment, $home];
         return view('traditionList', [
-            'sortedTraditions' => $sortedTraditions
+            'sortedTraditions' => $sortedTraditions,
+            'categories' => $categories 
         ]);
     }
 

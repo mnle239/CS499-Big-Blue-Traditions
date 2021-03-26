@@ -3,67 +3,70 @@
 @section('content')
 <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
-            <form action="{{route('traditionList') }}" method="post" class="mb-4">
-                @csrf
-                <div class="mb-4">
-                    <label for="name" class="sr-only">Name</label>
-                    <textarea name="name" id="name" class="bg-gray-100 
-                    border-2 w-full p-4 rounded-lg @error('name') border-red-500 @enderror"
-                    placeholder="Tradition name"></textarea>
+            @auth
+                @if(auth()->user()->name == "Admin")
+                <form action="{{route('traditionList') }}" method="post" class="mb-4">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="name" class="sr-only">Name</label>
+                        <textarea name="name" id="name" class="bg-gray-100 
+                        border-2 w-full p-4 rounded-lg @error('name') border-red-500 @enderror"
+                        placeholder="Tradition name"></textarea>
 
-                    @error('name')
-                        <div class="text-red-500 mt-2 text-sm">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
+                        @error('name')
+                            <div class="text-red-500 mt-2 text-sm">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
 
-                <div class="mb-4">
-                    <label for="description" class="sr-only">Description</label>
-                    <textarea name="description" id="description" class="bg-gray-100 
-                    border-2 w-full p-4 rounded-lg @error('description') border-red-500 @enderror"
-                    placeholder="Tradition description"></textarea>
+                    <div class="mb-4">
+                        <label for="description" class="sr-only">Description</label>
+                        <textarea name="description" id="description" class="bg-gray-100 
+                        border-2 w-full p-4 rounded-lg @error('description') border-red-500 @enderror"
+                        placeholder="Tradition description"></textarea>
 
-                    @error('description')
-                        <div class="text-red-500 mt-2 text-sm">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
+                        @error('description')
+                            <div class="text-red-500 mt-2 text-sm">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
 
-                <div class="mb-4">
-                    <label for="category" class="sr-only">Category</label>
-                    <textarea name="category" id="category" class="bg-gray-100 
-                    border-2 w-full p-4 rounded-lg @error('category') border-red-500 @enderror"
-                    placeholder="Tradition category"></textarea>
+                    <div class="mb-4">
+                        <label for="category" class="sr-only">Category</label>
+                        <textarea name="category" id="category" class="bg-gray-100 
+                        border-2 w-full p-4 rounded-lg @error('category') border-red-500 @enderror"
+                        placeholder="Tradition category"></textarea>
 
-                    @error('category')
-                        <div class="text-red-500 mt-2 text-sm">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
+                        @error('category')
+                            <div class="text-red-500 mt-2 text-sm">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
 
-                <div class="mb-4">
-                    <label for="points" class="sr-only">Points</label>
-                    <textarea name="points" id="points" class="bg-gray-100 
-                    border-2 w-full p-4 rounded-lg @error('points') border-red-500 @enderror"
-                    placeholder="Tradition point value"></textarea>
+                    <div class="mb-4">
+                        <label for="points" class="sr-only">Points</label>
+                        <textarea name="points" id="points" class="bg-gray-100 
+                        border-2 w-full p-4 rounded-lg @error('points') border-red-500 @enderror"
+                        placeholder="Tradition point value"></textarea>
 
-                    @error('points')
-                        <div class="text-red-500 mt-2 text-sm">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
+                        @error('points')
+                            <div class="text-red-500 mt-2 text-sm">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
 
-                <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 
-                    font-medium">Submit</button>
-                </div>
-            </form>
+                    <div>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 
+                        font-medium">Submit</button>
+                    </div>
+                </form>
+                @endif
+            @endauth
 
-            @php ($categories = ["All", "History/Traditions", "Big Blue Nation", "Student Involvement", "My Old Kentucky Home"])
 
             <div x-data="{ openTab: 1 }" class="p-6">
                 <ul class="flex border-b">
