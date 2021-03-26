@@ -63,40 +63,44 @@
                 </div>
             </form>
 
-            <nav class="p-6 bg-white flex justify-between mb-6">
-                <ul class="flex items-center">
-                    <li>
-                        <button id="All" class="p-3">All</button>
-                    </li>
-                    <li>
-                        <button id="History" class="p-3">History/Traditions</button>
-                    </li>
-                    <li>
-                        <button id="BBN" class="p-3">Big Blue Nation</button>
-                    </li>
-                    <li>
-                        <button id="Involvement" class="p-3">Student Involvement</button>                   
-                    </li>
-                    <li>
-                        <button id="Kentucky" class="p-3">My Old Kentucky Home</button>
-                    </li>
+            @php ($categories = ["All", "History/Traditions", "Big Blue Nation", "Student Involvement", "My Old Kentucky Home"])
+
+            <div x-data="{ openTab: 1 }" class="p-6">
+                <ul class="flex border-b">
+                    @php ($i = 1)
+                    @foreach ($categories as $category)
+                    
+                        <li @click="openTab = {{ $i }}" :class="{ '-mb-px': openTab === {{ $i }} }" class="-mb-px mr-1">
+                            <a :class="openTab === {{ $i }} ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" 
+                            class="bg-white inline-block py-2 px-4 font-semibold" href="#">
+                                {{ $category }}
+                            </a>
+                        </li>
+                        @php ($i = $i +1)
+                    @endforeach
                 </ul>
-            </nav>
 
+                <div class="w-full pt-4">
+                    @for ($i = 0; $i < count($sortedTraditions); $i++)
+                        <div x-show="openTab === {{ $i+1 }}">
+                            @if ($sortedTraditions[$i]->count())
+                                @foreach ($sortedTraditions[$i] as $tradition)
+                                    <div class="mb-4">
+                                        <p> {{ $tradition->name }} - {{ $tradition->description }}</p>
+                                        <p>Category: {{ $tradition->category }} Point Value:{{ $tradition->points }}</p>
+                                        <a class="bg-blue-100 mb-2" href="{{ route('completedTraditions') }}" class="p-3">Complete tradition!</a>
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>There are no traditions.</p>
+                            @endif
+                        </div>
+                    @endfor
+                </div>
+            </div>
 
-
-            @if ($traditions->count())
-                @foreach ($traditions as $tradition)
-                    <div class="mb-4">
-                        <p> {{ $tradition->name }} - {{ $tradition->description }}</p>
-                        <p>Category: {{ $tradition->category }} Point Value:{{ $tradition->points }}</p>
-                        <a class="bg-blue-100 mb-2" href="{{ route('completedTraditions') }}" class="p-3">Complete tradition!</a>
-                    </div>
-                @endforeach
-            @else
-                <p>There are no traditions.</p>
-            @endif
-
+            <!-- Alpine.js--> 
+            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
         </div>
     </div>
 @endsection
