@@ -25,21 +25,27 @@ class TraditionsController extends Controller
     }
 
     public function store(Request $request){
-      
-        $this->validate($request, [
-        'name' => 'required',
-        'description' => 'required',
-        'category' => 'required',
-        'points'=> 'required|integer' 
-        ]);
+        
+        if(request('deleteB') == true){
+            $data = Tradition::where('name', $request['deleteB']); 
+            if(!is_null($data)){
+                $data->delete();
+            }
+        }else {
+            $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'points'=> 'required|integer' 
+            ]);
 
-        Tradition::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'category' => $request->category,
-            'points' => $request->points,
-        ]);
-
+            Tradition::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'category' => $request->category,
+                'points' => $request->points,
+            ]);
+        }
         return back();
     }
 }

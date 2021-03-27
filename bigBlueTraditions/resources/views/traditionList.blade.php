@@ -92,6 +92,17 @@
                                         <p> {{ $tradition->name }} - {{ $tradition->description }}</p>
                                         <p>Category: {{ $tradition->category }} Point Value:{{ $tradition->points }}</p>
                                         <a class="bg-blue-100 mb-2" href="{{ route('completedTraditions') }}" class="p-3">Complete tradition!</a>
+                                        @auth
+                                            @if(auth()->user()->name == "Admin")
+                                            <form name="deleteButton" id="deleteButton" action="{{route('traditionList') }}" method="post" class="mb-4">
+                                            @csrf
+                                            <div>
+                                                <button name="deleteB" id="deleteB" type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 
+                                                font-medium" value="{{ $tradition->name }}">Delete Tradition</button>
+                                            </div>
+                                            </form>
+                                            @endif
+                                        @endauth
                                     </div>
                                 @endforeach
                             @else
