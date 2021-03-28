@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/userInfo', function () {
+    return view('userInfo', [
+        'completedTraditions' => collect()
+    ]);
+})->name('userInfo');
+
 Route::get('/traditionList', [TraditionsController::class, 'index'])->name('traditionList');
 Route::post('/traditionList', [TraditionsController::class, 'store']);
 

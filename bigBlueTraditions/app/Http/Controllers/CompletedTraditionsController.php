@@ -13,10 +13,7 @@ class CompletedTraditionsController extends Controller
     }
     
     public function index(){
-        $completedTraditions = CompletedTradition::paginate(2);
-        return view('traditions.index', [
-            'completedTraditions' => $completedTraditions
-        ]);
+        return view('traditions.index');
     }
 
     public function store(Request $request){
@@ -25,7 +22,11 @@ class CompletedTraditionsController extends Controller
         ]);
 
         $request->user()->completedTraditions()->create($request->only('body'));
+        $request->user();
+        $completedTraditions = CompletedTradition::get();
 
-        return back();
+        return view('userInfo', [
+            'completedTraditions' => $completedTraditions
+        ]);
     }
 }

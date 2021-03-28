@@ -24,21 +24,6 @@
                 </div>
             </form>
 
-            @if ($completedTraditions->count())
-                @foreach ($completedTraditions as $completedTradition)
-                    <div class="mb-4">
-                        <a herf="" class="font-bold">{{ $completedTradition->user->name }}</a><span class="text-gray-600 
-                        text-sm">{{ $completedTradition->created_at->toDateString() }}</span>
-
-                        <p class="mb-2"> {{ $completedTradition->body }}</p>
-                    </div>
-                @endforeach
-
-                {{ $completedTraditions->links() }}
-            @else
-                <p>There are no completed traditions.</p>
-            @endif
-
         </div>
     </div>
 @endsection
