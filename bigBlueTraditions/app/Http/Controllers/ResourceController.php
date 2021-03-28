@@ -16,15 +16,22 @@ class ResourceController extends Controller
     }
 
     public function store(Request $request){
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required'
-        ]);
+        if(request('deleteB') == true){
+            $data = Resource::where('name', $request['deleteB']); 
+            if(!is_null($data)){
+                $data->delete();
+            }
+        }else {
+            $this->validate($request, [
+                'name' => 'required',
+                'description' => 'required'
+            ]);
 
-        Resource::create([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
+            Resource::create([
+                'name' => $request->name,
+                'description' => $request->description,
+            ]);
+        }
 
         return back();
     }

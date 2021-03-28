@@ -15,17 +15,24 @@ class PrizesController extends Controller
     }
 
     public function store(Request $request){
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required',
-            'points'=> 'required|integer'
-        ]);
+        if(request('deleteB') == true){
+            $data = Prize::where('name', $request['deleteB']); 
+            if(!is_null($data)){
+                $data->delete();
+            }
+        }else {
+            $this->validate($request, [
+                'name' => 'required',
+                'description' => 'required',
+                'points'=> 'required|integer'
+            ]);
 
-        Prize::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'points' => $request->points,
-        ]);
+            Prize::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'points' => $request->points,
+            ]);
+        }
 
         return back();
     }

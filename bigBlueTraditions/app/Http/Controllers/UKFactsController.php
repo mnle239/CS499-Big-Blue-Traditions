@@ -16,14 +16,20 @@ class UKFactsController extends Controller
     }
 
     public function store(Request $request){
-        $this->validate($request, [
-            'description' => 'required'
-        ]);
+        if(request('deleteB') == true){
+            $data = UKFact::where('description', $request['deleteB']); 
+            if(!is_null($data)){
+                $data->delete();
+            }
+        }else{
+            $this->validate($request, [
+                'description' => 'required'
+            ]);
 
-        UKFact::create([
-            'description' => $request->description,
-        ]);
-
+            UKFact::create([
+                'description' => $request->description,
+            ]);
+        }
         return back();
     }
 }

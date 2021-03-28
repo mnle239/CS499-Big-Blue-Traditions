@@ -59,6 +59,17 @@
                     <div class="mb-4">
                         <p> {{ $prize->name }} - {{ $prize->description }}</p>
                         <p>Point Value:{{ $prize->points }}</p>
+                        @auth
+                            @if(auth()->user()->name == "Admin")
+                            <form action="{{route('prizeList') }}" method="post" class="mb-4">
+                                @csrf
+                                <div>
+                                    <button name="deleteB" id="deleteB" type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 
+                                    font-medium" value="{{ $prize->name }}">Delete Prize</button>
+                                </div>
+                            </form>
+                            @endif
+                        @endauth
                     </div>
                 @endforeach
             @else

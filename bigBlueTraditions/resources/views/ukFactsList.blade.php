@@ -32,6 +32,17 @@
                 @foreach ($facts as $fact)
                     <div class="mb-4">
                         <p> {{ $fact->description }}</p>
+                        @auth
+                            @if(auth()->user()->name == "Admin")
+                            <form action="{{route('ukFactsList') }}" method="post" class="mb-4">
+                                @csrf
+                                <div>
+                                    <button name="deleteB" id="deleteB" type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 
+                                    font-medium" value="{{ $fact->description }}">Delete Fact</button>
+                                </div>
+                            </form>
+                            @endif
+                        @endauth
                     </div>
                 @endforeach
             @else
