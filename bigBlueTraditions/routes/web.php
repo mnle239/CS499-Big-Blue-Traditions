@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\TraditionsController;
+use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\UKFactsController;
 use App\Http\Controllers\CouponsController;
@@ -15,11 +16,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/userInfo', function () {
-    return view('userInfo', [
-        'completedTraditions' => collect()
-    ]);
-})->name('userInfo');
+Route::get('/userInfo', [UserInfoController::class, 'index'])->name('userInfo');
 
 Route::get('/traditionList', [TraditionsController::class, 'index'])->name('traditionList');
 Route::post('/traditionList', [TraditionsController::class, 'store']);
@@ -44,5 +41,9 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/completedTraditions', [CompletedTraditionsController::class, 'index'])->name('completedTraditions');
-Route::post('/completedTraditions', [CompletedTraditionsController::class, 'store']);
+Route::get('/completedTraditions/{tradition}', function($tradition) {
+    return view('traditions.index', [
+        'tradition' => $tradition
+    ]);
+})->name('completedTraditions');
+Route::post('/completedTraditions/{traditionName}', [CompletedTraditionsController::class, 'store']);

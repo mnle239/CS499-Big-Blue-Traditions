@@ -20,13 +20,12 @@ class CompletedTraditionsController extends Controller
         $this->validate($request, [
             'body' => 'required'
         ]);
-
-        $request->user()->completedTraditions()->create($request->only('body'));
-        $request->user();
-        $completedTraditions = CompletedTradition::get();
-
-        return view('userInfo', [
-            'completedTraditions' => $completedTraditions
+ 
+        $request->user()->completedTraditions()->create([
+            'body' => $request->body,
+            'tradition_id' => $request->tradition
         ]);
+
+        return redirect('userInfo');
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
-            <form action="{{route('completedTraditions') }}" method="post" class="mb-4">
+            <form action="{{route('completedTraditions', $tradition) }}" method="post" class="mb-4">
                 @csrf
                 <div class="mb-4">
                     <label for="body" class="sr-only">Body</label>
@@ -17,6 +17,8 @@
                         </div>
                     @enderror
                 </div>
+
+                <input type="hidden" id="tradition" name="tradition" value={{$tradition}}>
 
                 <div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 

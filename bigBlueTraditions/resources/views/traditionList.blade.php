@@ -91,7 +91,7 @@
                                     <div class="mb-4">
                                         <p> {{ $tradition->name }} - {{ $tradition->description }}</p>
                                         <p>Category: {{ $tradition->category }} Point Value:{{ $tradition->points }}</p>
-                                        <a class="bg-blue-100 mb-2" href="{{ route('completedTraditions') }}" class="p-3">Complete tradition!</a>
+                                        <a class="bg-blue-100 mb-2" href="{{ route('completedTraditions', $tradition) }}"class="p-3">Complete tradition!</a>
                                         @auth
                                             @if(auth()->user()->name == "Admin")
                                             <form name="deleteButton" id="deleteButton" action="{{route('traditionList') }}" method="post" class="mb-4">

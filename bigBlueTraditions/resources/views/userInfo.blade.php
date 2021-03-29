@@ -16,13 +16,13 @@
             <br>
             <br>
 
-            Completed Tradtitions: 
+            Completed Traditions: 
             @if ($completedTraditions->count())
-                @foreach ($completedTraditions ?? '' as $completedTradition)
+                @foreach ($completedTraditions as $completedTradition)
                     @if($completedTradition->user->name == auth()->user()->name)
                         <div class="mb-4">
-                            <a herf="" class="font-bold">{{ $completedTradition->user->name }}</a><span class="text-gray-600 
-                            text-sm">{{ $completedTradition->created_at->toDateString() }}</span>
+                            <a herf="" class="font-bold">{{ $completedTradition->tradition->name }}</a><span class="text-gray-600 
+                            text-sm">{{ $completedTradition->created_at->toDateString() }} Points Earned: {{$completedTradition->tradition->points}}</span>
 
                             <p class="mb-2"> {{ $completedTradition->body }}</p>
                         </div>
