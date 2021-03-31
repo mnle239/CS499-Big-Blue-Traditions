@@ -52,14 +52,34 @@
                     </div>
                 </form>
                 @endif
-            @endauth
+            
 
-            @if ($prizes->count())
-                @foreach ($prizes as $prize)
-                    <div class="mb-4">
-                        <p> {{ $prize->name }} - {{ $prize->description }}</p>
-                        <p>Point Value:{{ $prize->points }}</p>
-                        @auth
+                @if ($prizes->count())
+                    @foreach ($prizes as $prize)
+                        <div class="mb-4">
+                            <p> {{ $prize->name }} - {{ $prize->description }}</p>
+                            <p>Point Value:{{ $prize->points }}</p>
+
+                            <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <div>
+                                    <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200">
+                                        Percent Complete
+                                    </span>
+                                </div>
+
+                                <div class="text-right">
+                                    <span class="text-xs font-semibold inline-block text-lightBlue-600">
+                                        {{ (auth()->user()->points)/($prize->points) * 100 }}%
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                                <div style="width:{{ (auth()->user()->points)/($prize->points) * 100}}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+                            </div>
+
+                            
                             @if(auth()->user()->name == "Admin")
                             <form action="{{route('prizeList') }}" method="post" class="mb-4">
                                 @csrf
@@ -69,12 +89,12 @@
                                 </div>
                             </form>
                             @endif
-                        @endauth
-                    </div>
-                @endforeach
-            @else
-                <p>There are no prizes.</p>
-            @endif
+                        </div>
+                    @endforeach
+                @else
+                    <p>There are no prizes.</p>
+                @endif
+            @endauth
 
         </div>
     </div>

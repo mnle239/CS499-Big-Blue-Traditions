@@ -11,6 +11,7 @@ class CompletedTradition extends Model
 
     protected $fillable = [
         'body',
+        'file_path',
         'tradition_id'
     ];
 
