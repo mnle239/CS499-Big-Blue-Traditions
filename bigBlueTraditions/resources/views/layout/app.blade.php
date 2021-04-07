@@ -7,18 +7,33 @@
 		<title>Big Blue Traditions</title>
 
 		<link rel="stylesheet" href=" {{ asset('css/app.css') }}">
+		<style>
+			body {
+				font-family: "Trebuchet MS";
+			}
+			footer {
+				position: fixed;
+				padding: 10px 10px 0px 10px;
+				bottom: 0;
+				width: 100%;
+				/* Height of the footer*/ 
+				height: 40px;
+				background: lightgray;
+        	}
+    	</style>
 	</head>
 	<body class="bg-gray-200">
-		<nav class="p-6 bg-white flex justify-between mb-6">
+		<nav class="p-6 bg-blue-800 flex justify-between mb-6 text-white">
+
 			<ul class="flex items-center">
 				<li>
-					<a href="/" class="p-3">Home</a>
+					<a href="/" class="p-3">Home</a> 
 				</li>
 				<li>
 					<a href="{{ route('traditionList') }}" class="p-3">Traditions</a>
 				</li>
 				<li>
-					<a href="{{ route('resourceList') }}" class="p-3">Resources</a>
+					<a href="{{ route('resourceList') }}" class="p-3"> Resources</a>
 				</li>
 				<li>
 					<a href="{{ route('ukFactsList') }}" class="p-3">Fun Facts</a>
@@ -54,7 +69,13 @@
 				@endguest
 			</ul>
 		</nav>
+			
 		@yield('content')
+
 	</body>
+	<footer>
+		<p>UKY Student Philanthropy Board 2021      
+        <a href="mailto:ukspb.activities@gmail.com">ukspb.activities@gmail.com</a></p>
+	</footer>
 </html>
 <!-- vim:filetype=php:-->
