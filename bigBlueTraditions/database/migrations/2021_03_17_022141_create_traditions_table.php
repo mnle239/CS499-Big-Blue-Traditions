@@ -19,6 +19,7 @@ class CreateTraditionsTable extends Migration
             $table->text('description');
             $table->text('category');
             $table->integer('points')->unsigned();
+            $table->text('link')->nullable();
             $table->timestamps();
         });
     }

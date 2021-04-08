@@ -59,6 +59,12 @@
                         @enderror
                     </div>
 
+                    <div class="mb-4">
+                        <label for="link" class="sr-only">Additional Link</label>
+                        <textarea name="link" id="link" class="bg-gray-100 border-2 w-full p-4 rounded-lg"
+                        placeholder="Link to resource homepage"></textarea>
+                    </div>
+
                     <div>
                         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 
                         font-medium">Submit</button>
@@ -91,6 +97,10 @@
                                     <div class="mb-4">
                                         <p> {{ $tradition->name }} - {{ $tradition->description }}</p>
                                         <p>Category: {{ $tradition->category }} Point Value:{{ $tradition->points }}</p>
+
+                                        @if ($tradition->link)
+                                            <a href = "{{ $tradition->link }}"  class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">More Information</a>
+                                        @endif
                                         <a class="bg-blue-100 mb-2" href="{{ route('completedTraditions', $tradition) }}"class="p-3">Complete tradition!</a>
                                         @auth
                                             @if(auth()->user()->name == "Admin")

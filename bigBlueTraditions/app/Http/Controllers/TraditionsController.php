@@ -44,6 +44,7 @@ class TraditionsController extends Controller
                 'description' => $request->description,
                 'category' => $request->category,
                 'points' => $request->points,
+                'link' => $request->link,
             ]);
         }
         return back();

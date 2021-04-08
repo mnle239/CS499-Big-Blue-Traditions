@@ -30,6 +30,7 @@ class ResourceController extends Controller
             Resource::create([
                 'name' => $request->name,
                 'description' => $request->description,
+                'link' => $request->link,
             ]);
         }
 

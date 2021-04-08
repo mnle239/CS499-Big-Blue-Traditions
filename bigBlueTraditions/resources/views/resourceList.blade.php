@@ -33,6 +33,12 @@
                         @enderror
                     </div>
 
+                    <div class="mb-4">
+                        <label for="link" class="sr-only">Additional Link</label>
+                        <textarea name="link" id="link" class="bg-gray-100 border-2 w-full p-4 rounded-lg"
+                        placeholder="Link to resource homepage"></textarea>
+                    </div>
+
                     <div>
                         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 
                         font-medium">Submit</button>
@@ -45,6 +51,9 @@
                 @foreach ($resources as $resource)
                     <div class="mb-4">
                         <p> {{ $resource->name }} - {{ $resource->description }}</p>
+                        @if ($resource->link)
+                            <a href = "{{ $resource->link }}"  class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">More Information</a>
+                        @endif
                         @auth
                             @if(auth()->user()->name == "Admin")
                             <form action="{{route('resourceList') }}" method="post" class="mb-4">

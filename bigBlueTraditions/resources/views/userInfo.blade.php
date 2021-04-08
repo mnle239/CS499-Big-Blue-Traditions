@@ -19,7 +19,7 @@
             Completed Traditions: 
             @if ($completedTraditions->count())
                 @foreach ($completedTraditions as $completedTradition)
-                    @if($completedTradition->user->name == auth()->user()->name)
+                    @if($completedTradition->user->name == auth()->user()->id)
                         <div class="mb-4">
                             <a herf="" class="font-bold">{{ $completedTradition->tradition->name }}</a><span class="text-gray-600 
                             text-sm">{{ $completedTradition->created_at->toDateString() }} Points Earned: {{$completedTradition->tradition->points}}</span>

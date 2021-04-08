@@ -13,6 +13,7 @@ class Tradition extends Model
         'name',
         'description',
         'category',
-        'points'
+        'points',
+        'link',
     ];
 }
