@@ -18,19 +18,41 @@
 
             Completed Traditions: 
             @if ($completedTraditions->count())
-                @foreach ($completedTraditions as $completedTradition)
-                    @if($completedTradition->user->name == auth()->user()->id)
+                @if(auth()->user()->name == "Admin")
+                    @foreach ($completedTraditions as $completedTradition)
                         <div class="mb-4">
                             <a herf="" class="font-bold">{{ $completedTradition->tradition->name }}</a><span class="text-gray-600 
                             text-sm">{{ $completedTradition->created_at->toDateString() }} Points Earned: {{$completedTradition->tradition->points}}</span>
-
+                            </br><a herf="" class="font-bold">User: {{$completedTradition->user->email}}</a>
                             <img src="{{ Storage::url('product/' . $completedTradition->file_path) }}" style="max-width:300px;max-height:300px;border-radius:10px;"/>
                             
 
                             <p class="mb-2"> {{ $completedTradition->body }}</p>
+
+                            <form name="deleteButton" id="deleteButton" action="{{route('userInfo') }}" method="post" class="mb-4">
+                                @csrf
+                                <div>
+                                    <button name="deleteB" id="deleteB" type="submit" class="bg-blue-500 text-white px-4 py-2 rounded 
+                                    font-medium" value="{{ $completedTradition->body }}">Delete Tradition</button>
+                                </div>
+                            </form>
                         </div>
-                    @endif
-                @endforeach
+                    @endforeach
+                @else
+                    @foreach ($completedTraditions as $completedTradition)
+                        @if($completedTradition->user->id == auth()->user()->id)
+                            <div class="mb-4">
+                                <a herf="" class="font-bold">{{ $completedTradition->tradition->name }}</a><span class="text-gray-600 
+                                text-sm">{{ $completedTradition->created_at->toDateString() }} Points Earned: {{$completedTradition->tradition->points}}</span>
+
+                                <img src="{{ Storage::url('product/' . $completedTradition->file_path) }}" style="max-width:300px;max-height:300px;border-radius:10px;"/>
+                                
+
+                                <p class="mb-2"> {{ $completedTradition->body }}</p>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
             @else
                 <p>You have not completed any traditions.</p>
             @endif

@@ -16,6 +16,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/userInfo', [UserInfoController::class, 'index'])->name('userInfo');
+Route::post('/userInfo', [UserInfoController::class, 'store']);
 
 Route::get('/traditionList', [TraditionsController::class, 'index'])->name('traditionList');
 Route::post('/traditionList', [TraditionsController::class, 'store']);
