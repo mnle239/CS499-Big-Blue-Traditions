@@ -4,7 +4,7 @@
 <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
             @auth
-                @if(auth()->user()->name == "Admin")
+                @if(auth()->user()->id == 1)
                 <form action="{{route('resourceList') }}" method="post" class="mb-4">
                     @csrf
                     <div class="mb-4">
@@ -55,7 +55,7 @@
                             <a href = "{{ $resource->link }}"  class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">More Information</a>
                         @endif
                         @auth
-                            @if(auth()->user()->name == "Admin")
+                            @if(auth()->user()->id == 1)
                             <form action="{{route('resourceList') }}" method="post" class="mb-4">
                                 @csrf
                                 <div>

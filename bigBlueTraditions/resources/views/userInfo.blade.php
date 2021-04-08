@@ -18,7 +18,7 @@
 
             Completed Traditions: 
             @if ($completedTraditions->count())
-                @if(auth()->user()->name == "Admin")
+                @if(auth()->user()->id == 1)
                     @foreach ($completedTraditions as $completedTradition)
                         <div class="mb-4">
                             <a herf="" class="font-bold">{{ $completedTradition->tradition->name }}</a><span class="text-gray-600 

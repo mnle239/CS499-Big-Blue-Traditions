@@ -4,7 +4,7 @@
 <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
             @auth
-                @if(auth()->user()->name == "Admin")
+                @if(auth()->user()->id == 1)
                 <form action="{{route('traditionList') }}" method="post" class="mb-4">
                     @csrf
                     <div class="mb-4">
@@ -103,7 +103,7 @@
                                         @endif
                                         <a class="bg-blue-100 mb-2" href="{{ route('completedTraditions', $tradition) }}"class="p-3">Complete tradition!</a>
                                         @auth
-                                            @if(auth()->user()->name == "Admin")
+                                            @if(auth()->user()->id == 1)
                                             <form name="deleteButton" id="deleteButton" action="{{route('traditionList') }}" method="post" class="mb-4">
                                             @csrf
                                             <div>

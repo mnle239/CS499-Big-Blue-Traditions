@@ -18,7 +18,7 @@ class CreateCompletedTraditionsTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('body');
             $table->string('file_path');
-            $table->foreignId('tradition_id')->constrained();
+            $table->foreignId('tradition_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
