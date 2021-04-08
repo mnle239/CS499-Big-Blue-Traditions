@@ -2,16 +2,6 @@
 
 @section('content')
 
-@if ($errors->any())
-   <div class="alert alert-danger">
-     <ul>
-     @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-     @endforeach
-     </ul>
-   </div>
-@endif
-
     <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
             <form action="{{route('completedTraditions', $tradition) }}" method="post" class="mb-4" enctype="multipart/form-data">
@@ -30,7 +20,14 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="file" name="file" required>
+                    <input type="file" name="file" >
+
+                    @error('file')
+                        <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
                 </div>
 
                 <input type="hidden" id="tradition" name="tradition" value={{$tradition}}>

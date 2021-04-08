@@ -6,7 +6,6 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\TraditionsController;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\ResourceController;
-use App\Http\Controllers\UKFactsController;
 use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\PrizesController;
 use App\Http\Controllers\CompletedTraditionsController;
@@ -23,9 +22,6 @@ Route::post('/traditionList', [TraditionsController::class, 'store']);
 
 Route::get('/resourceList', [ResourceController::class, 'index'])->name('resourceList');
 Route::post('/resourceList', [ResourceController::class, 'store']);
-
-Route::get('/ukFactsList', [UKFactsController::class, 'index'])->name('ukFactsList');
-Route::post('/ukFactsList', [UKFactsController::class, 'store']);
 
 Route::get('/couponList', [CouponsController::class, 'index'])->name('couponList');
 Route::post('/couponList', [CouponsController::class, 'store']);

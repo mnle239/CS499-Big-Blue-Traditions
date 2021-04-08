@@ -36,9 +36,6 @@
 					<a href="{{ route('resourceList') }}" class="p-3"> Resources</a>
 				</li>
 				<li>
-					<a href="{{ route('ukFactsList') }}" class="p-3">Fun Facts</a>
-				</li>
-				<li>
 					<a href="{{ route('couponList') }}" class="p-3">Local Coupons and Deals</a>
 				</li>
 				<li>

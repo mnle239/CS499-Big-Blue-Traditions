@@ -24,6 +24,9 @@
                             <a herf="" class="font-bold">{{ $completedTradition->tradition->name }}</a><span class="text-gray-600 
                             text-sm">{{ $completedTradition->created_at->toDateString() }} Points Earned: {{$completedTradition->tradition->points}}</span>
 
+                            <img src="{{ Storage::url('product/' . $completedTradition->file_path) }}" style="max-width:300px;max-height:300px;border-radius:10px;"/>
+                            
+
                             <p class="mb-2"> {{ $completedTradition->body }}</p>
                         </div>
                     @endif

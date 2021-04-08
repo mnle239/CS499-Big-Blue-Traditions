@@ -22,26 +22,19 @@ class CompletedTraditionsController extends Controller
     public function store(Request $request){
 
         $this->validate($request, [
-            'body' => 'required'
+            'body' => 'required',
+            'file' => 'required|mimes:jpeg,bmp,png'
         ]);
 
-        // ensure the request has a file before we attempt anything else.
-        if ($request->hasFile('file')) {
-
-            $request->validate([
-                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-            ]);
-
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-            $request->file->store('product', 'public');
+        // Save the file locally in the storage/public/ folder under a new folder named /product
+        $request->file->store('product', 'public');
 
 
-            $request->user()->completedTraditions()->create([
-                'body' => $request->body,
-                "file_path" => $request->file->hashName(),
-                'tradition_id' => $request->tradition
-            ]);
-        }
+        $request->user()->completedTraditions()->create([
+            'body' => $request->body,
+            "file_path" => $request->file->hashName(),
+            'tradition_id' => $request->tradition
+        ]);
 
         $traditionRow = Tradition::find($request->tradition);
         $points = $traditionRow->points;
