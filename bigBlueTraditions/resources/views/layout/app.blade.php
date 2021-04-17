@@ -11,6 +11,12 @@
 			body {
 				font-family: "Trebuchet MS";
 			}
+			div.container {
+      			display: block;
+				margin-right: 20px;
+				position: relative;
+				right: -170%;
+    		}
 			footer {
 				position: fixed;
 				padding: 10px 10px 0px 10px;
@@ -41,6 +47,15 @@
 				<li>
 					<a href="{{ route('prizeList') }}" class="p-3">Prizes</a>
 				</li>
+			</ul>
+
+			<ul class="flex items-center">
+				<div class="container">
+					<img src="{{url('1200px-University_of_Kentucky_seal.svg.png')}}" alt="UKY Seal" height="60" width="60">
+				</div>
+				<div class="container">
+					<img src="{{url('UK_SPB_Seal.JPG')}}" alt="UK SPB Seal" height="60" width="60">
+				</div>
 			</ul>
 
 			<ul class="flex items-center">
